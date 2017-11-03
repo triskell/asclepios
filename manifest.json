@@ -1,7 +1,7 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "Asclepios",
+  "short_name": "Asclepios",
+  "description": "Asclepios client application. Some experiment on personal health data.",
   "icons": [
     {
       "src": "images/manifest/icon-192x192.png",
