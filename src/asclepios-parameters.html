@@ -1,0 +1,68 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="asclepios-parameters">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <h1>Parameters</h1>
+      <p>
+        <h2>Warp10</h2>
+        <paper-input value="{{warp10Url}}" label="Warp10 URL" on-change="storeWarp10Url"></paper-input>
+        <paper-input value="{{warp10ReadToken}}" label="Warp10 read token" on-change="storeWarp10ReadToken"></paper-input>
+        <paper-input value="{{warp10WriteToken}}" label="Warp10 write token" on-change="storeWarp10WriteToken"></paper-input>
+      </p>
+    </div>
+  </template>
+
+  <script>
+    class AsclepiosParameters extends Polymer.Element {
+      static get is() { return 'asclepios-parameters'; }
+      static get properties() {
+        return {
+          warp10Url: {
+            type: String,
+            value: localStorage.getItem('warp10-url') || '',
+          },
+          warp10ReadToken: {
+            type: String,
+            value: localStorage.getItem('warp10-read-token') || '',
+          },
+          warp10WriteToken: {
+            type: String,
+            value: localStorage.getItem('warp10-write-token') || '',
+          },
+        };
+      }
+      storeWarp10Url() {
+        localStorage.setItem('warp10-url', this.warp10Url);
+      }
+      storeWarp10ReadToken() {
+        localStorage.setItem('warp10-read-token', this.warp10ReadToken);
+      }
+      storeWarp10WriteToken() {
+        localStorage.setItem('warp10-write-token', this.warp10WriteToken);
+      }
+    }
+
+    window.customElements.define(AsclepiosParameters.is, AsclepiosParameters);
+  </script>
+</dom-module>

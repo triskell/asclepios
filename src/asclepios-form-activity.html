@@ -1,0 +1,70 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="asclepios-form-activity">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <h1>Activity</h1>
+      <paper-input value="{{activity}}" label="Activity"></paper-input>
+      <paper-input value="{{duration}}" label="Duration" auto-validate pattern="^[0-9]+(\.[0-9]+)?$" error-message="Please type a valid number. You can use one '.' as a decimal marker.">
+        <div slot="suffix">hours</div>
+      </paper-input>
+      <paper-button raised on-click="postActivity">Send</paper-button>
+    </div>
+  </template>
+
+  <script>
+    class AsclepiosFormActivity extends Polymer.Element {
+      static get is() { return 'asclepios-form-activity'; }
+      static get properties() {
+        return {
+          activity: {
+            type: String,
+            value: '',
+          },
+          duration: {
+            type: String,
+            value: '1',
+          },
+        }
+      }
+      postActivity(e) {
+        var url = localStorage.getItem('warp10-url') || '';
+        var token = localStorage.getItem('warp10-write-token') || '';
+
+        if(url!='' && token!='' && this.activity!='' && /^[0-9]+(\.[0-9]+)?$/.test(this.duration)){
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url, true);
+          xhr.setRequestHeader('X-Warp10-Token', token);
+          xhr.send(
+            '// asclepios.activity{activity=' + this.activity.toLowerCase() + '} ' + this.duration
+          );
+          this.ingredient = '';
+          this.quantity = '1';
+        }
+      }
+    }
+
+    window.customElements.define(AsclepiosFormActivity.is, AsclepiosFormActivity);
+  </script>
+</dom-module>
