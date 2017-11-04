@@ -11,8 +11,11 @@
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
     "test:integration": "polymer build # test that psk builds without error with the CLI",
-    "publish": "npm run publish:build && npm run publish:git",
-    "publish:build": "polymer build && rm -rf gh-pages/ && cp -r build/es5-bundled/ gh-pages/ && cp LICENSE gh-pages/LICENSE",
-    "publish:git": "git add gh-pages && git commit -m \"Publishing gh-pages\" && git subtree push --prefix gh-pages origin gh-pages"
+    "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:fix && npm run gh-pages:copy && npm run gh-pages:git",
+    "gh-pages:clean": "rm -rf gh-pages/",
+    "gh-pages:build": "polymer build",
+    "gh-pages:fix": "sed -i \"s/rootPath:'\\/'/rootPath:'\\/asclepios\\/'/\" build/asclepios/index.html",
+    "gh-pages:copy": "cp -r build/asclepios/ gh-pages/ && cp LICENSE gh-pages/LICENSE",
+    "gh-pages:git": "git add gh-pages && git commit -m \"Publishing gh-pages\" && git subtree push --prefix gh-pages origin gh-pages"
   }
 }
