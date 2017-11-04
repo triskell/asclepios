@@ -62,7 +62,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if(url!='' && token!='' && this.ingredient!=''){
           var xhr = new XMLHttpRequest();
-          xhr.open("POST", url, true);
+          xhr.open("POST", url + '/update', true);
           xhr.setRequestHeader('X-Warp10-Token', token);
           xhr.send(
             '// asclepios.meal{ingredient=' + this.ingredient.toLowerCase() + '} ' + this.quantity

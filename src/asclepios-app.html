@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="asclepios-icons.html">
 
 <link rel="lazy-import" href="asclepios-diary.html">
+<link rel="lazy-import" href="asclepios-console.html">
 <link rel="lazy-import" href="asclepios-parameters.html">
 <link rel="lazy-import" href="asclepios-about.html">
 <link rel="lazy-import" href="asclepios-view404.html">
@@ -86,6 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="diary" href="[[rootPath]]diary">Dairy</a>
+          <a name="console" href="[[rootPath]]console">Console</a>
           <a name="parameters" href="[[rootPath]]parameters">Parameters</a>
           <a name="about" href="[[rootPath]]about">About</a>
         </iron-selector>
@@ -107,6 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <asclepios-diary name="diary"></asclepios-diary>
+          <asclepios-console name="console"></asclepios-console>
           <asclepios-parameters name="parameters"></asclepios-parameters>
           <asclepios-about name="about"></asclepios-about>
           <asclepios-view404 name="view404"></asclepios-view404>

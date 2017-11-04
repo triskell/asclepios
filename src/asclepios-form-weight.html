@@ -49,7 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if(url!='' && token!='' && /^[0-9]+(\.[0-9]+)?$/.test(this.weight)){
           var xhr = new XMLHttpRequest();
-          xhr.open("POST", url, true);
+          xhr.open("POST", url + '/update', true);
           xhr.setRequestHeader('X-Warp10-Token', token);
           xhr.send(
             '// asclepios.weight{} ' + this.weight

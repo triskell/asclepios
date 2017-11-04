@@ -4,6 +4,7 @@
   "fragments": [
     "src/asclepios-diary.html",
     "src/asclepios-parameters.html",
+    "src/asclepios-console.html",
     "src/asclepios-about.html",
     "src/asclepios-view404.html",
     "src/asclepios-form-weight.html",

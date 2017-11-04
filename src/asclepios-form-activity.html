@@ -54,7 +54,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         if(url!='' && token!='' && this.activity!='' && /^[0-9]+(\.[0-9]+)?$/.test(this.duration)){
           var xhr = new XMLHttpRequest();
-          xhr.open("POST", url, true);
+          xhr.open("POST", url + '/update', true);
           xhr.setRequestHeader('X-Warp10-Token', token);
           xhr.send(
             '// asclepios.activity{activity=' + this.activity.toLowerCase() + '} ' + this.duration
