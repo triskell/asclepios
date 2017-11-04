@@ -14,7 +14,7 @@
     "gh-pages": "npm run gh-pages:clean && npm run gh-pages:build && npm run gh-pages:fix && npm run gh-pages:copy && npm run gh-pages:git",
     "gh-pages:clean": "rm -rf gh-pages/",
     "gh-pages:build": "polymer build",
-    "gh-pages:fix": "sed -i \"s/rootPath:'\\/'/rootPath:'\\/asclepios\\/'/\" build/asclepios/index.html",
+    "gh-pages:fix": "sed -i \"s/rootPath:'\\/'/rootPath:'\\/asclepios\\/'/\" build/asclepios/index.html && sed -i 's/\"start_url\": \"\\/\"/\"start_url\": \"\\/asclepios\\/\"/' build/asclepios/manifest.json",
     "gh-pages:copy": "cp -r build/asclepios/ gh-pages/ && cp LICENSE gh-pages/LICENSE",
     "gh-pages:git": "git add gh-pages && git commit -m \"Publishing gh-pages\" && git subtree push --prefix gh-pages origin gh-pages"
   }
