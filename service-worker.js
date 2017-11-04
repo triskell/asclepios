@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["bower_components/webcomponentsjs/webcomponents-loader.js","f13bbbbf647b7922575a7894367ddaaf"],["images/favicon.ico","82b34d0faee76b89a9f946763428f668"],["index.html","155a434745412d521456e90369a5a620"],["manifest.json","a7da2f861ae61e5f153475ac091895ca"],["src/asclepios-about.html","2450d209a38b2fc13c9b226300a19ce4"],["src/asclepios-app.html","942f0f87fa68d3302c4c309839cfa241"],["src/asclepios-diary.html","baabff706c22f81f75cc42f47f8704ba"],["src/asclepios-parameters.html","20ba65f174cc3f62eae4d5a0d220915a"],["src/asclepios-view404.html","45fd35271b9607225ad5136fa6aa6314"]];
+var precacheConfig = [["bower_components/webcomponentsjs/webcomponents-loader.js","f13bbbbf647b7922575a7894367ddaaf"],["images/favicon.ico","82b34d0faee76b89a9f946763428f668"],["index.html","7a2a5e2ae0cc61b665588bda63fcf8ac"],["manifest.json","a7da2f861ae61e5f153475ac091895ca"],["src/asclepios-about.html","2450d209a38b2fc13c9b226300a19ce4"],["src/asclepios-app.html","942f0f87fa68d3302c4c309839cfa241"],["src/asclepios-diary.html","baabff706c22f81f75cc42f47f8704ba"],["src/asclepios-parameters.html","20ba65f174cc3f62eae4d5a0d220915a"],["src/asclepios-view404.html","45fd35271b9607225ad5136fa6aa6314"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
