@@ -3,5 +3,9 @@
   "src/asclepios-diary.html": {},
   "src/asclepios-parameters.html": {},
   "src/asclepios-about.html": {},
-  "src/asclepios-view404.html": {}
+  "src/asclepios-view404.html": {},
+  "src/asclepios-form-weight.html": {},
+  "src/asclepios-form-meal.html": {},
+  "src/asclepios-form-activity.html": {},
+  "src/asclepios-form-mood.html": {}
 }
