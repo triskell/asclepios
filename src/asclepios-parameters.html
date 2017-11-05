@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="asclepios-parameters">
@@ -20,16 +21,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      paper-button.red {
+        background-color: #F00;
+        color: white;
+      }
+      paper-button.red:hover {
+        background-color: #F55;
+      }
     </style>
 
     <div class="card">
-      <h1>Parameters</h1>
-      <p>
-        <h2>Warp10</h2>
-        <paper-input value="{{warp10Url}}" label="Warp10 URL" on-change="storeWarp10Url"></paper-input>
-        <paper-input value="{{warp10ReadToken}}" label="Warp10 read token" on-change="storeWarp10ReadToken"></paper-input>
-        <paper-input value="{{warp10WriteToken}}" label="Warp10 write token" on-change="storeWarp10WriteToken"></paper-input>
-      </p>
+      <h1>Warp10 configuration</h1>
+      <paper-input value="{{warp10Url}}" label="Warp10 URL" on-change="storeWarp10Url"></paper-input>
+      <paper-input value="{{warp10ReadToken}}" label="Warp10 read token" on-change="storeWarp10ReadToken"></paper-input>
+      <paper-input value="{{warp10WriteToken}}" label="Warp10 write token" on-change="storeWarp10WriteToken"></paper-input>
+    </div>
+    <div class="card">
+      <h1>Warp10 reset</h1>
+      <paper-button raised  class="red" on-click="resetWarp10">DELETE ALL DATA</paper-button>
     </div>
   </template>
 
@@ -60,6 +69,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       storeWarp10WriteToken() {
         localStorage.setItem('warp10-write-token', this.warp10WriteToken);
+      }
+      resetWarp10() {
+        if(confirm("This operation will delete all asclepios records on your warp10 database. This can not be undone. Do you still want to delete everything?")) {
+          var url = localStorage.getItem('warp10-url') || '';
+          var token = localStorage.getItem('warp10-write-token') || '';
+          if(url!='' && token!='' && this.ingredient!=''){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url + '/delete?deleteall&selector=~asclepios.*{}', true);
+            xhr.setRequestHeader('X-Warp10-Token', token);
+            xhr.send();
+          }
+        }
       }
     }
 
